@@ -9,7 +9,7 @@ class Mine extends Component {
   }
   render () {
     return (
-      <WebView src='https://vip.kingdee.com/' />
+      <WebView src='https://vip.kingdee.com' />
     )
   }
 }
