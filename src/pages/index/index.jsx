@@ -1,8 +1,10 @@
 import Taro from '@tarojs/taro'
 import { Component } from 'react'
 import { connect } from 'react-redux'
-import { View,Swiper,SwiperItem,Image} from '@tarojs/components'
+import { View,Swiper,SwiperItem,Text,ScrollView} from '@tarojs/components'
 import { add, minus, asyncAdd } from '../../actions/counter'
+import SpaceLine from '../../component/spacelIne/index'
+import Tab from '../../component/Tab/index'
 import './index.less'
 
 
@@ -23,11 +25,14 @@ class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      swiperData:[]
+      swiperData:[],
+      tabBar:[
+        '金蝶云社区','金蝶云社区','金蝶云社区','金蝶云社区','金蝶云社区','金蝶云社区','金蝶云社区',
+      ]
     };
   }
   componentDidMount () {
-    wx.cloud.callFunction({
+    Taro.cloud.callFunction({
       // 云函数名称
       name: 'swiper',
     })
@@ -44,7 +49,7 @@ class Index extends Component {
     })
   }
   render () {
-    const {swiperData} = this.state;
+    const {swiperData, tabBar} = this.state;
     return (
       <View className='home'>
         <Swiper
@@ -63,6 +68,8 @@ class Index extends Component {
             ))
           }
         </Swiper>
+        {/* <Tab tabBar={tabBar} /> */}
+        {/* <SpaceLine /> */}
       </View>
     )
   }

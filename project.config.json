@@ -3,9 +3,9 @@
   "projectname": "myApp",
   "description": "demo",
   "appid": "wx17d1fb13d0474f95",
-  "cloudfunctionRoot":"cloud",
+  "cloudfunctionRoot": "cloud/",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": false,
     "enhance": false,
     "postcss": false,

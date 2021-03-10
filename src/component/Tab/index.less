@@ -1,0 +1,26 @@
+.scroll-view-tab{
+  white-space: nowrap;
+  width: 100%;
+  // height: 60px;
+  line-height: 70px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  .tab-content{
+    display: inline-block;
+    margin-left: 28px;
+    .actived-line{
+      width: 80px;
+      height: 8px;
+      display: block;
+      margin: 0 auto;
+      background: #2d8cf0;
+      transition: all 1s;
+    }
+  }
+  .tab-content:last-child{
+    margin-right: 28px;
+  }
+
+}
