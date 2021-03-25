@@ -1,0 +1,79 @@
+.mine-content{
+  .mine-intro{
+    margin: 0 40px;
+    height: 440px;
+    overflow: hidden;
+    background: url('https://6c69-lin-h098p-1259118378.tcb.qcloud.la/my-image.jpeg?sign=1250d6a0253dce555d10bb5d9aefbfb3&t=1615950316') no-repeat ;
+    background-size: cover;
+    color: #FFF;
+    position: relative;
+    z-index:1;
+    border-radius: 20px;
+    .drag{
+      width: 100%;
+      position: absolute;
+      z-index: 10;
+      .avatar{
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 100px auto;
+      }
+      .basic-flex{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 80px 40px 10px;
+        .name{
+          margin-right: 20px;
+        }
+      }
+      .city{
+        margin-left: 40px;
+      }
+    }
+  }
+  .mine-intro:after{
+    content: "";
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: inherit;
+    filter: blur(8px);
+    z-index: 2;
+  }
+  .mine-file{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 40px;
+    &-view{
+      width: 50%;
+      // color:#FFF;
+      background: #e8e8e8;
+      text-align: center;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      Image{
+        width: 48px;
+        height: 48px;
+        margin: 40px auto;
+      }
+    }
+    &-view:first-child{
+      margin-right: 20px;
+    }
+
+
+
+  }
+}
+
