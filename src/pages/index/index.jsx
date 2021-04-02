@@ -29,19 +29,28 @@ class Index extends Component {
       dayList:[],
       tabsData:[],
       tabBar:['进化中','每日一题'],
-      activedTab:0
+      activedTab:0,
+      fixedNav:false,
+      tabTop:0
     };
   }
+
   componentDidMount () {
     Taro.showLoading({
       title: '加载中',
     })
     this.getSwiperData()
     this.getDayData()
-    const tabsDom = document.getElementsByClassName('tabs')[0];
-    tabsDom.addEventListener('scroll',function(){
-      console.log(tabsDom)
-    })
+    setTimeout(() => {
+      this.getTop()
+    },2000)
+  }
+  getTop(){
+    const _this = this;
+    const query = Taro.createSelectorQuery();
+    query.select('.tabs').boundingClientRect(function(rect){
+      _this.setState({tabTop:rect.top})
+    }).exec();
   }
   getSwiperData(){
     Taro.cloud.callFunction({
@@ -49,7 +58,6 @@ class Index extends Component {
       name: 'swiper',
     })
     .then(res => {
-      Taro.hideLoading()
       res.result && this.setState({
         swiperList: res.result.data,
         tabsData: res.result.data
@@ -63,10 +71,10 @@ class Index extends Component {
       name: 'daylist',
     })
     .then(res => {
-      Taro.hideLoading()
       res.result && this.setState({
         dayList: res.result.data,
       })
+      Taro.hideLoading()
     })
     .catch(console.error)
   }
@@ -87,8 +95,20 @@ class Index extends Component {
       this.setState({tabsData:this.state.swiperList})
     }
   }
+  // 在H5或者其它端中，这个函数会被忽略
+  onPageScroll (e) {
+    if(e.scrollTop >= this.state.tabTop){
+      this.setState({
+        fixedNav:true
+      })
+    }else{
+      this.setState({
+        fixedNav:false
+      })
+    }
+  }
   render () {
-    const {swiperList, tabBar, activedTab, tabsData} = this.state;
+    const {swiperList, tabBar, activedTab, tabsData, fixedNav} = this.state;
     return (
       <View className='home'>
         <Swiper
@@ -107,7 +127,7 @@ class Index extends Component {
             ))
           }
         </Swiper>
-        <View className='tabs'>
+        <View className={["tabs",fixedNav ? 'fixed-tab' : '']} id='tabs'>
           {tabBar.map((item,index) => (
              <Text
                key={index}
@@ -118,7 +138,7 @@ class Index extends Component {
             </Text>
           ))}
         </View>
-        <View className='contents'>
+        <View className={['contents', fixedNav ? 'sticky-content' : '']}>
           <ContentView data={tabsData} />
         </View>
       </View>

@@ -12,7 +12,7 @@ export default {
     backgroundColor: '#eeeeee'
   },
   tabBar: {
-    "selectedColor":'#2d8cf0',
+    "selectedColor":'#055AF5',
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页",

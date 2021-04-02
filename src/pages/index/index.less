@@ -18,9 +18,11 @@ page {
     align-items: center;
     justify-content: space-between;
     margin: 20px 40px;
+    background: #fff;
+    border-radius: 40px;
     text{
       display: inline-block;
-      width: 48%;
+      width: 50%;
       height: 80px;
       line-height: 80px;
       border-radius: 40px;
@@ -29,9 +31,14 @@ page {
       text-align: center;
     }
     .active-tab{
-      background: #2d8cf0;
+      background:#055AF5;
       color: #FFF;
     }
+  }
+  .fixed-tab{
+    position: sticky;
+    top: 0px;
+    z-index: 1;
   }
   .contents{
     margin: 0 20px;

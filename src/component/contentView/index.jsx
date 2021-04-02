@@ -18,7 +18,6 @@ class ContentView extends Component {
   }
   render () {
     const {data} = this.props;
-    console.log(data)
     return (
       <ScrollView
         className='content-list'
