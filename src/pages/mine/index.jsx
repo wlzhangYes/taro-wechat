@@ -24,7 +24,7 @@ class Mine extends Component {
             <View className='city'><OpenData type='userCity' lang='zh_CN'></OpenData></View>
           </View>
         </View>
-        <View className='mine-file'>
+        {/* <View className='mine-file'>
           <View className='mine-file-view resume'>
             <Image src={resumeImg}></Image>
             <Text>我的简历</Text>
@@ -33,7 +33,7 @@ class Mine extends Component {
             <Image src={resumeImg}></Image>
             <Text>我的作品</Text>
           </View>
-        </View>
+        </View> */}
         <OfficialAccount></OfficialAccount>
       </View>
     )

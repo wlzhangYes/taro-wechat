@@ -9,11 +9,39 @@ class ContentView extends Component {
     this.state = {
     };
   }
-  goToPage(pageUrl){
+  //打开公众号文章
+  goToWechat(pageUrl){
     const {globalData} = Taro.getApp().$app;
     globalData.pageUrl = pageUrl;
     Taro.navigateTo({
       url: `/pages/openPage/index`
+    })
+  }
+  goToPage(item){
+    if(item.pageUrl){
+      this.goToWechat(item.pageUrl)
+    }else{
+      this.openFile(item.fileUrl)
+    }
+  }
+  openFile(fileUrl){
+    Taro.showLoading({
+      title: '下载中,请稍等...',
+    })
+    Taro.downloadFile({
+      url: fileUrl,
+      success (res) {
+        Taro.hideLoading();
+        if (res.statusCode === 200) {
+          const filePath = res.tempFilePath;
+          Taro.openDocument({
+            filePath: filePath,
+            success: function () {
+              console.log('打开文档成功')
+            }
+          })
+        }
+      }
     })
   }
   render () {
@@ -36,7 +64,7 @@ class ContentView extends Component {
             <View
               style={{backgroundImage: `url(${item.imgSrc})`}}
               className='image'
-              onClick={this.goToPage.bind(this, item.pageUrl)}
+              onClick={this.goToPage.bind(this, item)}
             ></View>
             <View className='content'>{item.content}</View>
           </View>
