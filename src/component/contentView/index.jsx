@@ -47,10 +47,10 @@ class ContentView extends Component {
   render () {
     const {data} = this.props;
     return (
-      <ScrollView
+      <View
         className='content-list'
-        scrollY
-        scrollWithAnimation
+        // scrollY
+        // scrollWithAnimation
         // lowerThreshold={20}
         // upperThreshold={20}
       >
@@ -69,7 +69,7 @@ class ContentView extends Component {
             <View className='content'>{item.content}</View>
           </View>
         ))}
-      </ScrollView>
+      </View>
     )
   }
 }
