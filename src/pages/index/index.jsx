@@ -110,7 +110,6 @@ class Index extends Component {
     })
   }
   changeTab(index){
-    debugger
     this.setState({
       activedTab: index
     })
@@ -125,7 +124,7 @@ class Index extends Component {
   // 在H5或者其它端中，这个函数会被忽略
   onPageScroll (e) {
     this.setState({
-      fixedNav:e.scrollTop >= this.state.tabTop
+      fixedNav:e.scrollTop >= this.state.tabTop - 10
     })
   }
   render () {

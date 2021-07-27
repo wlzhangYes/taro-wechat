@@ -26,7 +26,7 @@ class ContentView extends Component {
   }
   openFile(fileUrl){
     Taro.showLoading({
-      title: '下载中,请稍等...',
+      title: '加载中',
     })
     Taro.downloadFile({
       url: fileUrl,
