@@ -51,8 +51,8 @@ class ContentView extends Component {
         className='content-list'
         scrollY
         scrollWithAnimation
-        lowerThreshold={20}
-        upperThreshold={20}
+        // lowerThreshold={20}
+        // upperThreshold={20}
       >
         {data.map((item,index) => (
           <View key={index} className='main'>
