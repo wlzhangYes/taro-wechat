@@ -147,7 +147,7 @@ class Index extends Component {
             ))
           }
         </Swiper>
-        <View className={["tabs",fixedNav && 'fixed-tab']} id='tabs'>
+        <View className='tabs' id='tabs'>
           {tabBar.map((item,index) => (
              <Text
                key={index}
