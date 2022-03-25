@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import { Component } from 'react'
 import {View, OpenData, Image, Text, OfficialAccount} from '@tarojs/components'
 import './index.less'
@@ -6,20 +7,21 @@ class Mine extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      resumeImg:require('../../image/resume.png')
+      // resumeImg:require('../../image/resume.png')
     };
   }
   render () {
-    const {resumeImg} = this.state;
+    let userInfo = Taro.getStorageSync("userInfo");
+    console.log(userInfo)
     return (
       // <WebView src='https://vip.kingdee.com' />
       <View className='mine-content'>
         <View className='mine-intro'>
           <View className='drag'>
-            <View className='avatar'><OpenData type='userAvatarUrl'></OpenData></View>
+            <View className='avatar'><image src={userInfo.avatarUrl}></image></View>
             <view className='basic-flex'>
-              <View className='name'><OpenData type='userNickName'></OpenData></View>
-              <View className='gender'><OpenData type='userGender' lang='zh_CN'></OpenData></View>
+              <View className='name'><Text>{userInfo.nickName}</Text></View>
+              <View className='gender'><Text>{!userInfo.gender ? '男' : '女'}</Text></View>
             </view>
             <View className='city'><OpenData type='userCity' lang='zh_CN'></OpenData></View>
           </View>
