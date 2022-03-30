@@ -12,7 +12,6 @@ class Mine extends Component {
   }
   render () {
     let userInfo = Taro.getStorageSync("userInfo");
-    console.log(userInfo)
     return (
       // <WebView src='https://vip.kingdee.com' />
       <View className='mine-content'>
@@ -21,7 +20,7 @@ class Mine extends Component {
             <View className='avatar'><image src={userInfo.avatarUrl}></image></View>
             <view className='basic-flex'>
               <View className='name'><Text>{userInfo.nickName}</Text></View>
-              <View className='gender'><Text>{!userInfo.gender ? '男' : '女'}</Text></View>
+              {/* <View className='gender'><Text>{userInfo.gender === 1 ? '男' : userInfo.gender === 2 ? '女' : ''}</Text></View> */}
             </view>
             <View className='city'><OpenData type='userCity' lang='zh_CN'></OpenData></View>
           </View>
