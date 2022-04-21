@@ -111,15 +111,9 @@ class Index extends Component {
   }
   changeTab(index){
     this.setState({
-      activedTab: index
+      activedTab: index,
+      tabsData: index === 2 ? this.state.learnList : index === 1 ? this.state.dayList : this.state.swiperList
     })
-    if(index === 2){
-      this.setState({tabsData:this.state.learnList})
-    }else if(index === 1){
-      this.setState({tabsData:this.state.dayList})
-    }else{
-      this.setState({tabsData:this.state.swiperList})
-    }
   }
   // 在H5或者其它端中，这个函数会被忽略
   onPageScroll (e) {
